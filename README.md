@@ -18,3 +18,15 @@ it's path:
 [asdf]: https://github.com/asdf-vm/asdf
 [direnv plugin]: https://github.com/asdf-community/asdf-direnv
 [pro-tips]: https://github.com/asdf-community/asdf-direnv/blob/master/README.md#pro-tips
+
+Notice
+--------
+In the [setup section](https://github.com/asdf-community/asdf-direnv#setup) of asdf-direnv, you might find this instruction
+
+    asdf direnv setup --shell zsh --version system  
+
+You do not have to run this command and should not, as it appends your `zshrc` with 
+
+    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+    
+which has been [taken care by this plugin](https://github.com/zimfw/asdf/blob/37c681924efb969b452bc0c6f71fc885061aee94/init.zsh#L26) already. 
