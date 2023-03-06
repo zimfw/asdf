@@ -1,8 +1,8 @@
 if (( ! ${+ASDF_DIR} )); then
   for ASDF_DIR in \
-    {/usr/local,/opt/homebrew,/home/linuxbrew/.linuxbrew/}/opt/asdf/libexec \
-    /opt/asdf-vm \
-    ${HOME}/.asdf
+      {/usr/local,/opt/homebrew,/home/linuxbrew/.linuxbrew}/opt/asdf/libexec \
+      /opt/asdf-vm \
+      ${HOME}/.asdf
   do
     if [[ -e ${ASDF_DIR} ]] break
   done
@@ -22,6 +22,7 @@ fpath+=(${ASDF_DIR}/completions(FN))
 # Don't add shims directory to the path if direnv plugin is installed
 local asdf_data=${ASDF_DATA_DIR:-${HOME}/.asdf}
 if [[ -e ${asdf_data}/installs/direnv ]]; then
+  if (( ! ${+DIRENV_LOG_FORMAT} )) export DIRENV_LOG_FORMAT=$'\E[1mdirenv: %s\E[0m'
   alias direnv='asdf exec direnv'
   eval "$(direnv hook zsh)"
 else
