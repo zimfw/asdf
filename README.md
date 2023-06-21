@@ -15,6 +15,29 @@ it's path:
 
     ASDF_DIR=/path/to/asdf_dir
 
+FAQ
+---
+
+### How to configure asdf to work with the direnv installed with my system package manager?
+
+
+If you're using your system's direnv instead of direnv installed via asdf,
+follow these steps:
+
+1. Uninstall any direnv installed with asdf.
+2. Keep the asdf direnv plugin installed.
+3. Make sure the ~/.config/direnv/lib/use_asdf.sh script exists.
+4. Make sure your direnv .envrc files have `use asdf`.
+5. Remove `zmodule asdf` from .zimrc or any asdf initialization from .zshrc.
+6. Make sure you're initializing direnv during shell start-up, with the
+   following line in your .zshrc or any other preferred way:
+   ```
+   source <(direnv hook zsh)
+   ```
+
+Basically you're using direnv to activate asdf this way. Since you're using the
+system's direnv, that does not depend on asdf to work, it's a much simpler setup.
+
 [asdf]: https://github.com/asdf-vm/asdf
 [direnv plugin]: https://github.com/asdf-community/asdf-direnv
 [pro-tips]: https://github.com/asdf-community/asdf-direnv/blob/master/README.md#pro-tips
