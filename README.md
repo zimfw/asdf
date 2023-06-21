@@ -18,6 +18,19 @@ it's path:
 FAQ
 ---
 
+### Do do I install the [direnv plugin] to work with this module?
+
+1. Run this command:
+   ```
+   asdf plugin-add direnv
+   ```
+2. Do *not* run this command: `asdf direnv setup --shell zsh --version latest`
+3. Only if you don't have direnv already installed with your system package
+   manager, run this command:
+   ```
+   asdf install direnv latest
+   ```
+
 ### How to configure asdf to work with the direnv installed with my system package manager?
 
 
