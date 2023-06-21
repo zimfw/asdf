@@ -18,6 +18,19 @@ it's path:
 FAQ
 ---
 
+### Do do I install the [direnv plugin] to work with this module?
+
+1. Run this command:
+   ```
+   asdf plugin-add direnv
+   ```
+2. Do *not* run this command: `asdf direnv setup --shell zsh --version latest`
+3. Only if you don't have direnv already installed with your system package
+   manager, run this command:
+   ```
+   asdf install direnv latest
+   ```
+
 ### How to configure asdf to work with the direnv installed with my system package manager?
 
 
@@ -41,15 +54,3 @@ system's direnv, that does not depend on asdf to work, it's a much simpler setup
 [asdf]: https://github.com/asdf-vm/asdf
 [direnv plugin]: https://github.com/asdf-community/asdf-direnv
 [pro-tips]: https://github.com/asdf-community/asdf-direnv/blob/master/README.md#pro-tips
-
-Notice
---------
-In the [setup section](https://github.com/asdf-community/asdf-direnv#setup) of asdf-direnv, you might find this instruction
-
-    asdf direnv setup --shell zsh --version system  
-
-You do not have to run this command and should not, as it appends your `zshrc` with 
-
-    source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
-    
-which has been [taken care by this plugin](https://github.com/zimfw/asdf/blob/37c681924efb969b452bc0c6f71fc885061aee94/init.zsh#L26) already. 
