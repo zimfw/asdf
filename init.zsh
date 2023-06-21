@@ -30,4 +30,9 @@ else
 fi
 unset asdf_data
 
-source ${ASDF_DIR}/lib/asdf.sh
+# `asdf shell` is moved to ${ASDF_DIR}/asdf.sh since asdf v0.12.0
+if [[ -f ${ASDF_DIR}/lib/asdf.sh ]]; then
+  source ${ASDF_DIR}/lib/asdf.sh
+else
+  source ${ASDF_DIR}/asdf.sh
+fi
