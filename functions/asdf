@@ -1,0 +1,7 @@
+# vim:et sts=2 sw=2 ft=zsh
+if [[ ${1} == shell ]]; then
+  shift
+  eval "$(command asdf export-shell-version sh "${@}")"
+else
+  command asdf "${@}"
+fi

@@ -29,5 +29,3 @@ else
   path=(${asdf_data}/shims ${path:#${asdf_data}/shims})
 fi
 unset asdf_data
-
-source ${ASDF_DIR}/lib/asdf.sh
