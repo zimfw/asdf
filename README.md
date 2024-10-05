@@ -10,8 +10,8 @@ Settings
 
 The path of `ASDF_DIR`, where asdf is installed, is checked among the usual
 directories created by Homebrew or Pacman, or the default `${HOME}/.asdf`. You
-can define `ASDF_DIR`, before where this module is initialized, to customize
-it's path:
+can define `ASDF_DIR` in your .zshrc before initializing this module to customize
+its path:
 
     ASDF_DIR=/path/to/asdf_dir
 
@@ -20,33 +20,38 @@ FAQ
 
 ### Do do I install the [direnv plugin] to work with this module?
 
-1. Run this command:
+1. Run these commands:
    ```
    asdf plugin-add direnv
+   asdf direnv setup --no-touch-rc-file --version latest
    ```
-2. Do *not* run this command: `asdf direnv setup --shell zsh --version latest`
-3. Only if you don't have direnv already installed with your system package
-   manager, run this command:
+2. Make sure your .zshrc does not contain the following line:
    ```
-   asdf install direnv latest
+   source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
    ```
 
 ### How to configure asdf to work with the direnv installed with my system package manager?
 
+To use your system's direnv instead of direnv installed via asdf, follow these
+steps:
 
-If you're using your system's direnv instead of direnv installed via asdf,
-follow these steps:
-
-1. Uninstall any direnv installed with asdf.
-2. Keep the asdf direnv plugin installed.
-3. Make sure the ~/.config/direnv/lib/use_asdf.sh script exists.
+1. Keep the asdf direnv plugin installed. You can install it with:
+   ```
+   asdf plugin-add direnv
+   ```
+2. Uninstall any direnv installed with asdf:
+   ```
+   asdf uninstall direnv
+   ```
+3. Make sure the ~/.config/direnv/lib/use_asdf.sh script exists. You can
+   generate it with:
+   ```
+   asdf direnv setup --no-touch-rc-file --version system
+   ```
 4. Make sure your direnv .envrc files have `use asdf`.
 5. Remove `zmodule asdf` from .zimrc or any asdf initialization from .zshrc.
-6. Make sure you're initializing direnv during shell start-up, with the
-   following line in your .zshrc or any other preferred way:
-   ```
-   source <(direnv hook zsh)
-   ```
+6. Make sure you're initializing direnv during shell start-up, preferably with
+   `zmodule dirvenv` in your .zimrc.
 
 Basically you're using direnv to activate asdf this way. Since you're using the
 system's direnv, that does not depend on asdf to work, it's a much simpler setup.
