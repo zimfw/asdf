@@ -10,8 +10,8 @@ Settings
 
 The path of `ASDF_DIR`, where asdf is installed, is checked among the usual
 directories created by Homebrew or Pacman, or the default `${HOME}/.asdf`. You
-can define `ASDF_DIR` in your .zshrc before initializing this module to customize
-its path:
+can define a custom `ASDF_DIR` at the beginning of your .zshrc, before the
+modules are initialized with `source ${ZIM_HOME}/init.zsh`:
 
     ASDF_DIR=/path/to/asdf_dir
 
